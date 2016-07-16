@@ -38,8 +38,14 @@ public class AdapterDelegateManager<T> {
         if (viewType == FALL_BACK_DELEGATE_VIEW_TYPE) {
             throw new IllegalArgumentException("the view type can't be used");
         }
+        for(int i = 0;i < delegate.size();i++){
+
+        }
         if (!isAllowReplaceDelegate && delegate.get(viewType) != null) {
             throw new IllegalArgumentException("error");
+        }
+        if(delegate.indexOfValue(adapterDelegate) != -1){
+            throw new IllegalArgumentException("adapterDelegate aready exist");
         }
         delegate.put(viewType, adapterDelegate);
         return this;

@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import com.example.ch_.open_source.holder_c.HeaderAndFooterWrapper;
 import com.example.ch_.open_source.holder_c.MyAdapter;
+import com.example.ch_.open_source.model.Cat;
+import com.example.ch_.open_source.model.DisplayItem;
+import com.example.ch_.open_source.model.Dog;
+import com.example.ch_.open_source.model.Tiger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,18 +27,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerview);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        List<String> list = new ArrayList<>();
-        for (int i = 0;i < 10;i++){
-            list.add(i+"");
-        }
-        mAdapter = new MyAdapter(list);
-        HeaderAndFooterWrapper adapterWrapper = new HeaderAndFooterWrapper(mAdapter);
-        View view = LayoutInflater.from(this).inflate(R.layout.header,null,false);
-        adapterWrapper.addHeaderView(view);
-        TextView view1 = new TextView(this);
-        view1.setText("haha");
-        adapterWrapper.addHeaderView(view1);
-        mRecyclerView.setAdapter(adapterWrapper);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new MainAdapter(this,getAnimals());
+        mRecyclerView.setAdapter(mAdapter);
+    }
+    private List<DisplayItem> getAnimals(){
+        List<DisplayItem> animals = new ArrayList<>();
+        animals.add(new Dog("xiaohei_dog"));
+        animals.add(new Dog("xiaohuang_dog"));
+        animals.add(new Dog("xiaohong_dog"));
+        animals.add(new Cat("xiaohei_cat"));
+        animals.add(new Cat("xiaohuang_cat"));
+        animals.add(new Cat("xiaohong_cat"));
+        animals.add(new Tiger("xiaohei_tiger"));
+        animals.add(new Tiger("xiaohuang_tiger"));
+        animals.add(new Tiger("xiaohong_tiger"));
+        return animals;
     }
 }
