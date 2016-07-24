@@ -14,6 +14,9 @@ public class AdapterDelegateManager<T> {
     map for view type
      */
     SparseArrayCompat<AdapterDelegate<T>> delegate = new SparseArrayCompat<>();
+    /**
+     * 默认的delegate
+     */
     private AdapterDelegate<T> fallbackDelegate;
 
     public AdapterDelegateManager<T> addDelegate(@NonNull AdapterDelegate<T> adapterDelegate) {
@@ -37,9 +40,6 @@ public class AdapterDelegateManager<T> {
         }
         if (viewType == FALL_BACK_DELEGATE_VIEW_TYPE) {
             throw new IllegalArgumentException("the view type can't be used");
-        }
-        for(int i = 0;i < delegate.size();i++){
-
         }
         if (!isAllowReplaceDelegate && delegate.get(viewType) != null) {
             throw new IllegalArgumentException("error");

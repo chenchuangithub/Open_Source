@@ -47,4 +47,23 @@ public abstract class AbsDelegationAdapter<T> extends RecyclerView.Adapter {
         }
         this.items = items;
     }
+    public void addDelegate(AdapterDelegate<T> adapterDelegate){
+        if(null == this.adapterDelegateManager){
+            throw new NullPointerException("adapterManager is null");
+        }
+        if(adapterDelegate == null){
+            throw new NullPointerException("adapterDelegate is null");
+        }
+        adapterDelegateManager.addDelegate(adapterDelegate);
+    }
+    public void removeDelegate(AdapterDelegate<T> adapterDelegate){
+        if(null == this.adapterDelegateManager){
+            throw new NullPointerException("adapterManager is null");
+        }
+        if(adapterDelegate == null){
+            throw new NullPointerException("adapterDelegate is null");
+        }
+        adapterDelegateManager.removeDelegate(adapterDelegate);
+    }
+
 }

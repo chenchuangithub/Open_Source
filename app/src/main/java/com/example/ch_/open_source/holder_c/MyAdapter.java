@@ -20,7 +20,7 @@ public class MyAdapter extends RecyclerView.Adapter<HeaderAndFooterWrapper.ViewH
 
     @Override
     public HeaderAndFooterWrapper.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        HeaderAndFooterWrapper.ViewHolder viewHolder = new HeaderAndFooterWrapper.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item, null, false));
+        HeaderAndFooterWrapper.ViewHolder viewHolder = new HeaderAndFooterWrapper.ViewHolder(parent.getContext(),LayoutInflater.from(parent.getContext()).inflate(R.layout.item, null, false));
 
         return viewHolder;
     }
